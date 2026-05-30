@@ -1,4 +1,4 @@
-import { Masthead, Foot } from "../components/chrome";
+import { Masthead, Foot } from "@/app/components/chrome";
 
 export const metadata = {
   title: "Exclusão de Dados — Tubeless Lab",
