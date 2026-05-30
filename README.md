@@ -58,3 +58,5 @@ Estrutura pronta. Admin entra como rota protegida (ex.: `app/admin/`) lendo o **
 - Warnings do app.json (newArchEnabled, edgeToEdgeEnabled)
 - Build de produção (eas build --profile production)
 - TestFlight (iOS) + internal track (Play)
+
+deploy v2
