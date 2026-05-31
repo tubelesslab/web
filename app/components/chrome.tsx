@@ -25,7 +25,7 @@ export function Masthead() {
           <DropLogo />
           <span className="brand-text">
             <span className="brand-tbls">TBLS</span>
-            <span className="brand-lab"> Lab</span>
+            <span className="brand-lab">Lab</span>
           </span>
         </a>
         <nav className="nav">
