@@ -47,15 +47,15 @@ body {
   max-width: var(--maxw); margin: 0 auto; padding: 14px 22px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-drop { display: block; filter: drop-shadow(0 0 6px rgba(183,255,0,0.35)); }
 .brand-text {
   font-family: var(--font-display);
-  font-size: 22px; font-weight: 600; line-height: 1;
-  display: inline-flex; align-items: baseline; gap: 6px;
+  font-size: 24px; font-weight: 600; line-height: 1;
+  display: inline-flex; align-items: baseline; gap: 9px;
 }
-.brand-tbls { color: var(--ink); letter-spacing: 1px; }
-.brand-lab { color: var(--accent); font-weight: 500; }
+.brand-tbls { color: var(--ink); letter-spacing: 0.5px; }
+.brand-lab { color: var(--accent); font-weight: 600; }
 
 .nav { display: flex; gap: 22px; font-size: 14px; font-weight: 500; }
 .nav a { color: var(--ink-dim); text-decoration: none; transition: color .2s; }
