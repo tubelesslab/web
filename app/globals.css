@@ -136,7 +136,7 @@ table.dt td:first-child { color: var(--ink); }
 .home { overflow-x: hidden; }
 
 .hero {
-  max-width: var(--maxw); margin: 0 auto; padding: 80px 22px 64px;
+  max-width: 820px; margin: 0 auto; padding: 80px 20px 64px;
   text-align: center;
 }
 .hero-logo {
@@ -150,9 +150,11 @@ table.dt td:first-child { color: var(--ink); }
 .hero h1 {
   font-family: var(--font-display); font-weight: 600;
   font-size: clamp(40px, 9vw, 76px); line-height: 0.98; letter-spacing: 0.5px;
-  color: var(--ink); margin: 0 auto 20px; max-width: 12ch;
+  color: var(--ink); margin: 0 auto 20px; max-width: 20ch;
 }
 .hero h1 .hl { color: var(--accent); }
+.h1-break { display: none; }
+@media (min-width: 560px) { .h1-break { display: inline; } }
 .hero-sub {
   font-size: clamp(16px, 2.4vw, 20px); color: var(--ink-dim);
   max-width: 30ch; margin: 0 auto 38px; line-height: 1.55;
@@ -230,4 +232,3 @@ table.dt td:first-child { color: var(--ink); }
 }
 .final-cta h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px,6vw,52px); color: var(--ink); margin-bottom: 16px; letter-spacing: 0.3px; }
 .final-cta p { color: var(--ink-dim); margin-bottom: 34px; font-size: 17px; }
-
