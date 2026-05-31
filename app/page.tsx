@@ -39,7 +39,7 @@ export default function Home() {
       <section className="hero">
         <HeroLogo />
         <div className="tagline">Manutenção tubeless inteligente</div>
-        <h1>A manutenção do seu tubeless, <span className="hl">sob controle.</span></h1>
+<h1>A manutenção do seu tubeless,<br className="h1-break" /> <span className="hl">sob controle.</span></h1>
         <p className="hero-sub">
           Saiba a saúde do selante de cada pneu — antes de rodar. Sem abrir, sem adivinhar.
         </p>
