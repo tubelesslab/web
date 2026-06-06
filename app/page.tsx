@@ -26,7 +26,7 @@ function AppleIcon() {
 function StoreButtons() {
   return (
     <div className="cta-row">
-      
+      <a
         className="store-btn live"
         href="https://apps.apple.com/br/app/tubeless-lab/id6775593172"
         target="_blank"
