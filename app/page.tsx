@@ -15,14 +15,27 @@ function HeroLogo() {
   );
 }
 
+function AppleIcon() {
+  return (
+    <svg className="ico-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor">
+      <path d="M16.36 12.84c-.02-2.1 1.72-3.11 1.8-3.16-.98-1.43-2.5-1.63-3.04-1.65-1.29-.13-2.52.76-3.18.76-.65 0-1.67-.74-2.74-.72-1.41.02-2.71.82-3.43 2.08-1.46 2.54-.37 6.29 1.05 8.35.69 1.01 1.52 2.14 2.61 2.1 1.05-.04 1.44-.68 2.71-.68 1.27 0 1.62.68 2.73.66 1.13-.02 1.84-1.03 2.53-2.04.8-1.17 1.13-2.3 1.15-2.36-.03-.01-2.2-.84-2.22-3.34-.02.01.95-.6.95-.6zM14.27 6.5c.58-.7.97-1.68.86-2.65-.83.03-1.84.55-2.44 1.25-.54.62-1.01 1.61-.88 2.56.93.07 1.88-.47 2.46-1.16z"/>
+    </svg>
+  );
+}
+
 function StoreButtons() {
   return (
     <div className="cta-row">
-      <span className="store-btn" aria-label="App Store — em breve">
-        <span className="ico"></span>
-        <span className="tt"><small>Em breve na</small><b>App Store</b></span>
-        <span className="soon-tag">Em breve</span>
-      </span>
+      
+        className="store-btn live"
+        href="https://apps.apple.com/br/app/tubeless-lab/id6775593172"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Baixar na App Store"
+      >
+        <span className="ico"><AppleIcon /></span>
+        <span className="tt"><small>Baixar na</small><b>App Store</b></span>
+      </a>
       <span className="store-btn" aria-label="Google Play — em breve">
         <span className="ico">▶</span>
         <span className="tt"><small>Em breve no</small><b>Google Play</b></span>
@@ -39,7 +52,7 @@ export default function Home() {
       <section className="hero">
         <HeroLogo />
         <div className="tagline">Manutenção tubeless inteligente</div>
-<h1>A manutenção do seu tubeless,<br className="h1-break" /> <span className="hl">sob controle.</span></h1>
+        <h1>A manutenção do seu tubeless, <span className="hl">sob controle.</span></h1>
         <p className="hero-sub">
           Saiba a saúde do selante de cada pneu — antes de rodar. Sem abrir, sem adivinhar.
         </p>
@@ -120,7 +133,7 @@ export default function Home() {
       {/* CTA FINAL */}
       <section className="final-cta">
         <h2>Comece a rodar tranquilo.</h2>
-        <p>Em breve na App Store e no Google Play.</p>
+        <p>Já disponível na App Store. Google Play em breve.</p>
         <StoreButtons />
       </section>
 
