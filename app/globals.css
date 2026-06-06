@@ -181,6 +181,21 @@ table.dt td:first-child { color: var(--ink); }
   color: var(--bg); background: var(--accent); border-radius: 20px;
   padding: 3px 8px; font-weight: 700; margin-left: 2px;
 }
+/* Botão ativo (loja já disponível) */
+.store-btn.live {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.store-btn.live:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.store-btn.live .ico { color: var(--bg); display: inline-flex; align-items: center; }
+.store-btn.live .ico-svg { display: block; }
+.store-btn.live .tt small { color: rgba(13,13,13,0.65); }
+.store-btn.live .tt b { color: var(--bg); }
+
 
 .section { max-width: var(--maxw); margin: 0 auto; padding: 56px 22px; }
 .section-eyebrow {
