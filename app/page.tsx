@@ -37,7 +37,7 @@ function StoreButtons() {
         <span className="tt"><small>Baixar na</small><b>App Store</b></span>
       </a>
       <a
-      <className="store-btn live"
+        className="store-btn live"
         href="https://play.google.com/store/apps/details?id=com.tubelesslab.app"
         target="_blank"
         rel="noopener noreferrer"
