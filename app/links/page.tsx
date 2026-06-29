@@ -89,12 +89,11 @@ export default function LinksPage() {
       variant: "primary",
     },
     {
-      href: "#",
-      small: "Em breve no",
+      href: "https://play.google.com/store/apps/details?id=com.tubelesslab.app",
+      small: "Baixe no",
       big: "Google Play",
-      icon: <PlayIcon />,
+      icon: <PlayIcon color={ACID} />,
       variant: "ghost",
-      disabled: true,
     },
     {
       href: "https://tubelesslab.com",
