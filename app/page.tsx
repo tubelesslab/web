@@ -36,11 +36,16 @@ function StoreButtons() {
         <span className="ico"><AppleIcon /></span>
         <span className="tt"><small>Baixar na</small><b>App Store</b></span>
       </a>
-      <span className="store-btn" aria-label="Google Play — em breve">
+      <a
+      <className="store-btn live"
+        href="https://play.google.com/store/apps/details?id=com.tubelesslab.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Baixar no Google Play"
+      >
         <span className="ico">▶</span>
-        <span className="tt"><small>Em breve no</small><b>Google Play</b></span>
-        <span className="soon-tag">Em breve</span>
-      </span>
+        <span className="tt"><small>Baixar no</small><b>Google Play</b></span>
+      </a>
     </div>
   );
 }
@@ -133,7 +138,7 @@ export default function Home() {
       {/* CTA FINAL */}
       <section className="final-cta">
         <h2>Comece a rodar tranquilo.</h2>
-        <p>Já disponível na App Store. Google Play em breve.</p>
+        <p>Já disponível na App Store e no Google Play.</p>
         <StoreButtons />
       </section>
 
