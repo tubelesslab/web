@@ -93,7 +93,7 @@ export default function LinksPage() {
       small: "Baixe no",
       big: "Google Play",
       icon: <PlayIcon color={ACID} />,
-      variant: "ghost",
+      variant: "primary",
     },
     {
       href: "https://tubelesslab.com",
