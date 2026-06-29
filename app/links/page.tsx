@@ -44,9 +44,9 @@ function AppleIcon() {
   );
 }
 
-function PlayIcon({ color = MUTE }: { color?: string }) {
+function PlayIcon() {
   return (
-    <svg width="22" height="24" viewBox="0 0 24 24" fill={color} aria-hidden="true">
+    <svg width="22" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M3 2.5v19c0 .8.9 1.3 1.6.9l15-9.5c.6-.4.6-1.4 0-1.8l-15-9.5C3.9 1.2 3 1.7 3 2.5z" />
     </svg>
   );
