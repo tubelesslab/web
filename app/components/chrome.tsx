@@ -1,3 +1,30 @@
+type Lang = "pt" | "en";
+
+const LABELS = {
+  pt: {
+    privacy: "Privacidade",
+    terms: "Termos",
+    deleteData: "Excluir dados",
+    strava: "Strava",
+    privacyLong: "Política de Privacidade",
+    termsLong: "Termos de Uso",
+    deleteLong: "Exclusão de Dados",
+    stravaLong: "Suporte Strava",
+    stravaHref: "/strava",
+  },
+  en: {
+    privacy: "Privacy",
+    terms: "Terms",
+    deleteData: "Delete data",
+    strava: "Strava",
+    privacyLong: "Privacy Policy",
+    termsLong: "Terms of Use",
+    deleteLong: "Data Deletion",
+    stravaLong: "Strava Support",
+    stravaHref: "/strava/en",
+  },
+} as const;
+
 function DropLogo() {
   return (
     <svg className="logo-drop" viewBox="0 0 56 72" width="20" height="26" aria-hidden="true">
@@ -17,7 +44,8 @@ function DropLogo() {
   );
 }
 
-export function Masthead() {
+export function Masthead({ lang = "pt" }: { lang?: Lang }) {
+  const t = LABELS[lang];
   return (
     <header className="masthead">
       <div className="masthead-inner">
@@ -29,24 +57,27 @@ export function Masthead() {
           </span>
         </a>
         <nav className="nav">
-          <a href="/privacidade">Privacidade</a>
-          <a href="/termos">Termos</a>
-          <a href="/exclusao-de-dados">Excluir dados</a>
+          <a href="/privacidade">{t.privacy}</a>
+          <a href="/termos">{t.terms}</a>
+          <a href="/exclusao-de-dados">{t.deleteData}</a>
+          <a href={t.stravaHref}>{t.strava}</a>
         </nav>
       </div>
     </header>
   );
 }
 
-export function Foot() {
+export function Foot({ lang = "pt" }: { lang?: Lang }) {
+  const t = LABELS[lang];
   return (
     <footer className="foot">
       <div className="foot-inner">
         <div>© {new Date().getFullYear()} Tubeless Lab</div>
         <div className="links">
-          <a href="/privacidade">Política de Privacidade</a>
-          <a href="/termos">Termos de Uso</a>
-          <a href="/exclusao-de-dados">Exclusão de Dados</a>
+          <a href="/privacidade">{t.privacyLong}</a>
+          <a href="/termos">{t.termsLong}</a>
+          <a href="/exclusao-de-dados">{t.deleteLong}</a>
+          <a href={t.stravaHref}>{t.stravaLong}</a>
           <a href="mailto:setup@tubelesslab.com">setup@tubelesslab.com</a>
         </div>
       </div>
