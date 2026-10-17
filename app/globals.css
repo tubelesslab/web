@@ -60,6 +60,10 @@ body {
 .nav { display: flex; gap: 22px; font-size: 14px; font-weight: 500; }
 .nav a { color: var(--ink-dim); text-decoration: none; transition: color .2s; }
 .nav a:hover { color: var(--accent); }
+@media (max-width: 560px) {
+  .masthead-inner { flex-wrap: wrap; gap: 10px 16px; }
+  .nav { gap: 16px; font-size: 13px; flex-wrap: wrap; }
+}
 
 /* Doc page */
 .doc { padding: 56px 0 100px; }
@@ -90,7 +94,7 @@ body {
 .doc h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; margin: 26px 0 8px; color: var(--ink); }
 .doc p { margin-bottom: 16px; color: var(--ink-dim); }
 .doc p strong, .doc li strong { color: var(--ink); font-weight: 600; }
-.doc ul { margin: 0 0 18px 4px; padding-left: 22px; }
+.doc ul, .doc ol { margin: 0 0 18px 4px; padding-left: 22px; }
 .doc li { margin-bottom: 10px; color: var(--ink-dim); }
 .doc a { color: var(--accent-dim); text-decoration: underline; text-underline-offset: 3px; }
 .doc a:hover { color: var(--accent); }
@@ -247,3 +251,4 @@ table.dt td:first-child { color: var(--ink); }
 }
 .final-cta h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px,6vw,52px); color: var(--ink); margin-bottom: 16px; letter-spacing: 0.3px; }
 .final-cta p { color: var(--ink-dim); margin-bottom: 34px; font-size: 17px; }
+
