@@ -11,7 +11,7 @@ export default function Privacidade() {
       <main className="shell doc">
         <div className="eyebrow">Documento legal</div>
         <h1>Política de Privacidade</h1>
-        <p className="updated">Última atualização: 30 de maio de 2026</p>
+        <p className="updated">Última atualização: 17 de outubro de 2026</p>
 
         <p>
           Esta Política de Privacidade descreve como o aplicativo <strong>Tubeless Lab</strong> (&quot;app&quot;,
@@ -45,6 +45,7 @@ export default function Privacidade() {
             <tr><td>Histórico de manutenções</td><td>Você, ao registrar no app</td><td>Estimar quando o selante vai secar</td></tr>
             <tr><td>Cidade de referência</td><td>Você, ao escolher uma cidade</td><td>Ajustar a estimativa conforme o clima</td></tr>
             <tr><td>Preferências (idioma, etc.)</td><td>Você, nas configurações</td><td>Personalizar sua experiência</td></tr>
+            <tr><td>Distância e equipamentos do Strava (opcional)</td><td>Strava, somente se você conectar</td><td>Mostrar o desgaste do pneu e refinar a estimativa</td></tr>
           </tbody>
         </table>
         <div className="callout">
@@ -79,7 +80,32 @@ export default function Privacidade() {
           transferência internacional, realizada com salvaguardas adequadas conforme a LGPD.
         </p>
 
-        <h2><span className="num">05</span>Por quanto tempo guardamos</h2>
+        <h2><span className="num">05</span>Integração com o Strava (opcional)</h2>
+        <p>
+          Se você optar por conectar o Strava, acessamos a distância das suas atividades e os equipamentos
+          (bikes) da sua conta no Strava. Usamos esses dados <strong>apenas</strong> para mostrar o desgaste
+          do pneu das suas próprias rodas e refinar a sua própria estimativa de vida do selante. Eles aparecem
+          somente para você.
+        </p>
+        <ul>
+          <li>Não vendemos, não compartilhamos com terceiros e não agregamos esses dados entre usuários;</li>
+          <li>Não usamos os dados do Strava para treinar nenhum modelo, inclusive de inteligência artificial;</li>
+          <li>Os dados ficam em cache por no máximo 7 dias;</li>
+          <li>
+            Ao desconectar o Strava, apagamos os dados do Strava que mantemos (o vínculo do equipamento e a
+            última distância sincronizada). O contador de desgaste do pneu calculado para as suas rodas
+            permanece na sua conta até que você o zere ou exclua a conta;
+          </li>
+          <li>
+            Você pode desconectar no app (Config.), revogar o acesso em strava.com/settings/apps e solicitar a
+            exclusão dos seus dados em <a href="mailto:setup@tubelesslab.com">setup@tubelesslab.com</a>.
+          </li>
+        </ul>
+        <p>
+          Para ajuda com a integração, veja a página de <a href="/strava">Suporte Strava</a>.
+        </p>
+
+        <h2><span className="num">06</span>Por quanto tempo guardamos</h2>
         <p>
           Mantemos seus dados enquanto sua conta existir. Quando você solicita a exclusão, seus dados entram
           em um período de carência de <strong>30 dias</strong> (durante o qual você pode cancelar a exclusão)
@@ -87,7 +113,7 @@ export default function Privacidade() {
           de <a href="/exclusao-de-dados">Exclusão de Dados</a>.
         </p>
 
-        <h2><span className="num">06</span>Seus direitos como titular</h2>
+        <h2><span className="num">07</span>Seus direitos como titular</h2>
         <p>Pela LGPD, você pode a qualquer momento:</p>
         <ul>
           <li>Confirmar a existência de tratamento e acessar seus dados;</li>
@@ -102,7 +128,7 @@ export default function Privacidade() {
           <a href="mailto:setup@tubelesslab.com"> setup@tubelesslab.com</a>.
         </p>
 
-        <h2><span className="num">07</span>Segurança</h2>
+        <h2><span className="num">08</span>Segurança</h2>
         <p>
           Adotamos medidas técnicas e administrativas para proteger seus dados, incluindo conexões
           criptografadas, controle de acesso por usuário e isolamento de dados entre contas. Nenhum sistema
@@ -110,13 +136,13 @@ export default function Privacidade() {
           vazamento.
         </p>
 
-        <h2><span className="num">08</span>Crianças</h2>
+        <h2><span className="num">09</span>Crianças</h2>
         <p>
           O app não é direcionado a menores de 13 anos e não coletamos intencionalmente dados dessa faixa
           etária.
         </p>
 
-        <h2><span className="num">09</span>Alterações nesta política</h2>
+        <h2><span className="num">10</span>Alterações nesta política</h2>
         <p>
           Podemos atualizar esta política periodicamente. Mudanças relevantes serão comunicadas no app ou
           por e-mail. A data no topo indica a última revisão.
