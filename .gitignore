@@ -1,0 +1,12 @@
+
+# dependencias e builds
+node_modules/
+.next/
+.wrangler/
+.open-next/
+tsconfig.tsbuildinfo
+
+# segredos locais
+.dev.vars
+.env*
+!.env.example
