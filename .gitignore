@@ -1,0 +1,11 @@
+
+# dependencias e builds
+node_modules/
+.next/
+.wrangler/
+.open-next/
+
+# segredos locais
+.dev.vars
+.env*
+!.env.example
