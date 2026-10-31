@@ -43,6 +43,21 @@ export function fmtDateTime(v: unknown): string {
   return `${p.day}/${p.month}/${p.year} ${p.hour}:${p.minute}`;
 }
 
+// dd/mm hh:mm em America/Sao_Paulo
+export function fmtShort(v: unknown): string {
+  const s = fmtDateTime(v);
+  return s === "—" ? s : `${s.slice(0, 5)} ${s.slice(11)}`;
+}
+
+export const TOUR_STEPS: Record<string, string> = {
+  "1": "Boas-vindas",
+  "2": "Garagem",
+  "3": "Saúde",
+  "4": "Manutenção",
+  "5": "Atividade",
+  "6": "Config",
+};
+
 export function fmtDate(v: unknown): string {
   const s = fmtDateTime(v);
   return s === "—" ? s : s.slice(0, 10);

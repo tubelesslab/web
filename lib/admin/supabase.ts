@@ -1,5 +1,17 @@
 import { env } from "./env";
 
+// Erro do REST com o codigo do Postgres/PostgREST (ex.: 23514). Nunca expor `message` ao cliente.
+export class SupabaseError extends Error {
+  constructor(
+    public status: number,
+    public code: string | null,
+    message: string,
+  ) {
+    super(message);
+    this.name = "SupabaseError";
+  }
+}
+
 // fetch puro contra o REST do Supabase. Uso exclusivo no servidor.
 export async function sb(path: string, init: RequestInit = {}): Promise<Response> {
   const key = env("SUPABASE_SERVICE_ROLE_KEY");
@@ -13,7 +25,16 @@ export async function sb(path: string, init: RequestInit = {}): Promise<Response
       ...(init.headers as Record<string, string> | undefined),
     },
   });
-  if (!res.ok) throw new Error(`Supabase respondeu ${res.status} em ${path.split("?")[0]}`);
+  if (!res.ok) {
+    let code: string | null = null;
+    try {
+      const body = (await res.json()) as { code?: unknown };
+      if (typeof body.code === "string") code = body.code;
+    } catch {
+      // corpo nao e JSON
+    }
+    throw new SupabaseError(res.status, code, `Supabase respondeu ${res.status} em ${path.split("?")[0]}`);
+  }
   return res;
 }
 
