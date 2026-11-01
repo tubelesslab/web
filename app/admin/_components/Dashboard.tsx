@@ -419,6 +419,21 @@ export function Dashboard({ data }: { data: R }) {
 
       <Section title="Strava">
         <Panel>
+          {(() => {
+            const cap: R | null = d.strava_capacity ?? null;
+            const conn = num(cap?.connected);
+            const max = num(cap?.max);
+            const full = conn !== null && max !== null && conn >= max;
+            return (
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap", padding: "12px 16px" }}>
+                <span style={full ? { color: "#FF6A00", fontWeight: 600 } : undefined}>
+                  Vagas: {fmtN(cap?.connected)} / {fmtN(cap?.max)}
+                </span>
+                <span>Na fila: {fmtN(cap?.waitlist)}</span>
+                <span>Avisados: {fmtN(cap?.waitlist_notified)}</span>
+              </div>
+            );
+          })()}
           <DataTable
             rows={arr<R>(d.strava)}
             cols={[

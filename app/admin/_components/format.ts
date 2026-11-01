@@ -53,9 +53,10 @@ export const TOUR_STEPS: Record<string, string> = {
   "1": "Boas-vindas",
   "2": "Garagem",
   "3": "Saúde",
-  "4": "Manutenção",
+  "4": "Pneu",
   "5": "Atividade",
-  "6": "Config",
+  "6": "Shop",
+  "7": "Config",
 };
 
 export function fmtDate(v: unknown): string {
