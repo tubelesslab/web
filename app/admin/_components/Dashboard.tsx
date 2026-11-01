@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BarList, Card, Columns, DataTable, Empty, Grid, LineChart, Panel, Section, SubTitle } from "./ui";
-import { arr, fmtDate, fmtDateTime, fmtN, fmtPct, fmtText, num, tr } from "./format";
+import { TOUR_STEPS, arr, fmtDate, fmtDateTime, fmtN, fmtPct, fmtText, num, tr } from "./format";
 
 type R = Record<string, any>;
 
@@ -27,6 +27,16 @@ export function Dashboard({ data }: { data: R }) {
     num(shop.views_30d) && num(shop.clicks_30d) !== null
       ? ((num(shop.clicks_30d) as number) / (num(shop.views_30d) as number)) * 100
       : null;
+
+  const ob: R = d.onboarding_30d ?? {};
+  const pct = (part: unknown, whole: unknown): string | undefined => {
+    const p = num(part);
+    const w = num(whole);
+    return p !== null && w !== null && w > 0 ? fmtPct((p / w) * 100) : undefined;
+  };
+  const skipsByStep = [...arr<R>(ob.tour_skips_by_step)].sort((a, b) => Number(a.step) - Number(b.step));
+  const customSealants = arr<R>(d.custom_sealants);
+  const push: R = d.push_audience ?? {};
 
   const now = Date.now();
 
@@ -66,6 +76,44 @@ export function Dashboard({ data }: { data: R }) {
               right: funnelBase > 0 && num(f.users) !== null ? fmtPct(((num(f.users) as number) / funnelBase) * 100) : undefined,
             }))}
           />
+        </Panel>
+      </Section>
+
+      <Section title="Onboarding (30 dias)">
+        <Grid>
+          <Card label="Novos usuários" value={fmtN(ob.new_users)} />
+          <Card
+            label="Com rodas"
+            value={fmtN(ob.new_users_with_wheels)}
+            hint={pct(ob.new_users_with_wheels, ob.new_users) ? `${pct(ob.new_users_with_wheels, ob.new_users)} de ativação` : undefined}
+          />
+          <Card
+            label="Mediana até a 1ª roda"
+            value={num(ob.median_hours_to_first_wheel) === null ? "—" : `${fmtN(ob.median_hours_to_first_wheel, 1)} h`}
+          />
+          <Card label="Toques no botão da garagem vazia" value={fmtN(ob.empty_garage_cta_taps)} />
+        </Grid>
+        <div className="adm-two">
+          <Panel title="Funil do tour">
+            <BarList
+              items={[
+                { label: "Iniciaram", value: ob.tour_starts },
+                { label: "Concluíram", value: ob.tour_completes, right: pct(ob.tour_completes, ob.tour_starts) },
+                { label: "Pularam", value: ob.tour_skips, right: pct(ob.tour_skips, ob.tour_starts) },
+              ]}
+            />
+          </Panel>
+          <Panel title="Onde pulam">
+            <BarList
+              items={skipsByStep.map((s) => ({
+                label: `${fmtText(s.step)} · ${TOUR_STEPS[String(s.step)] ?? "—"}`,
+                value: s.total,
+              }))}
+            />
+          </Panel>
+        </div>
+        <Panel title="Abertura do formulário de rodas por origem">
+          <BarList items={arr<R>(ob.wheelset_form_opens).map((o) => ({ label: fmtText(o.source), value: o.total }))} />
         </Panel>
       </Section>
 
@@ -207,6 +255,25 @@ export function Dashboard({ data }: { data: R }) {
         </Panel>
       </Section>
 
+      <Section title="Selantes personalizados">
+        <Panel title="Selantes digitados em Other">
+          {customSealants.length === 0 ? (
+            <p className="adm-empty">Ninguém digitou um selante próprio ainda.</p>
+          ) : (
+            <DataTable
+              rows={customSealants}
+              cols={[
+                { label: "Nome", render: (r) => fmtText(r.name) },
+                { label: "Pessoas", num: true, render: (r) => fmtN(r.users) },
+                { label: "Manutenções", num: true, render: (r) => fmtN(r.logs) },
+                { label: "Pneus", num: true, render: (r) => fmtN(r.tires) },
+                { label: "Vida útil mediana (dias)", num: true, render: (r) => fmtN(r.median_lifespan_days, 1) },
+              ]}
+            />
+          )}
+        </Panel>
+      </Section>
+
       <Section title="Manutenções">
         <Panel title="Por tipo">
           <DataTable
@@ -278,6 +345,18 @@ export function Dashboard({ data }: { data: R }) {
             value={fmtN(eng.strava_connect_errors)}
             tone={tone(eng.strava_connect_errors, "warn")}
           />
+          <div className="adm-card">
+            <div className="adm-label">Push</div>
+            <div className="adm-kv">
+              <span>Aceitaram ofertas</span>
+              <span className="mono">{fmtN(push.opted_in_total)}</span>
+              <span>Aparelhos</span>
+              <span className="mono">{fmtN(push.with_token_total)}</span>
+            </div>
+            <a className="adm-link adm-card-link" href="/admin/push">
+              Abrir campanhas →
+            </a>
+          </div>
         </Grid>
         <div className="adm-two">
           <Panel title="Aberturas de informação">
