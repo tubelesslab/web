@@ -77,6 +77,17 @@ export function CampaignList({
         <div className="adm-panel">
           <div className="adm-scroll">
             <table className="adm-table adm-table-stack">
+              <colgroup>
+                <col className="c-when" />
+                <col />
+                <col className="c-dest" />
+                <col className="c-status" />
+                <col className="c-pub" />
+                <col className="c-sent" />
+                <col className="c-opens" />
+                <col className="c-clicks" />
+                <col className="c-actions" />
+              </colgroup>
               <thead>
                 <tr>
                   <th>Quando</th>
@@ -84,10 +95,14 @@ export function CampaignList({
                   <th>Destino</th>
                   <th>Status</th>
                   <th className="r">Público</th>
-                  <th className="r">Enviados / falhas</th>
+                  <th className="r">Env. / falhas</th>
                   <th className="r">Aberturas</th>
-                  <th className="r">Cliques no Shop (24 h)</th>
-                  <th />
+                  <th className="r" title="Cliques no Shop nas 24 h após o envio">
+                    Cliques 24 h
+                  </th>
+                  <th className="adm-th-actions">
+                    <span className="sr-only">Ações</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -95,27 +110,36 @@ export function CampaignList({
                   <tr key={String(c.id)}>
                     <td data-label="Quando" className="mono">{fmtShort(c.scheduled_at)}</td>
                     <td data-label="Mensagem" className="adm-msg-cell">
-                      <strong>{c.title_pt}</strong>
-                      {c.is_test && <span className="adm-tag">TESTE{c.test_email ? ` · ${c.test_email}` : ""}</span>}
+                      <div className="adm-msg-title">
+                        <strong>{c.title_pt}</strong>
+                        {c.is_test && <span className="adm-tag">TESTE</span>}
+                      </div>
+                      {c.is_test && c.test_email && <div className="adm-msg-email mono">{c.test_email}</div>}
                       <div className="adm-msg-body">{c.body_pt}</div>
                     </td>
-                    <td data-label="Destino">{destination(c)}</td>
+                    <td data-label="Destino">
+                      <span className="adm-clamp" title={destination(c)}>
+                        {destination(c)}
+                      </span>
+                    </td>
                     <td data-label="Status">
                       <span className={`adm-status st-${c.status}`} title={c.status === "failed" && c.error ? c.error : undefined}>
                         {STATUS_LABEL[c.status] ?? fmtText(c.status)}
                       </span>
                     </td>
                     <td data-label="Público" className="r mono">{fmtN(c.recipients)}</td>
-                    <td data-label="Enviados / falhas" className="r mono">{fmtN(c.sent)} / {fmtN(c.failed)}</td>
+                    <td data-label="Env. / falhas" className="r mono">{fmtN(c.sent)} / {fmtN(c.failed)}</td>
                     <td data-label="Aberturas" className="r mono">{opensText(c)}</td>
-                    <td data-label="Cliques no Shop (24 h)" className="r mono">{fmtN(c.shop_clicks_24h)}</td>
-                    <td className="adm-row-actions">
-                      {c.status === "scheduled" && (
-                        <button type="button" className="adm-btn" disabled={cancelling === String(c.id)} onClick={() => void cancel(c)}>
-                          Cancelar
-                        </button>
-                      )}
-                      <button type="button" className="adm-btn" onClick={() => onDuplicate(c)}>Duplicar</button>
+                    <td data-label="Cliques 24 h" className="r mono">{fmtN(c.shop_clicks_24h)}</td>
+                    <td className="adm-actions-cell">
+                      <div className="adm-row-actions">
+                        {c.status === "scheduled" && (
+                          <button type="button" className="adm-btn" disabled={cancelling === String(c.id)} onClick={() => void cancel(c)}>
+                            Cancelar
+                          </button>
+                        )}
+                        <button type="button" className="adm-btn" onClick={() => onDuplicate(c)}>Duplicar</button>
+                      </div>
                     </td>
                   </tr>
                 ))}
