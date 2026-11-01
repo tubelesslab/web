@@ -11,7 +11,7 @@ export default function Privacidade() {
       <main className="shell doc">
         <div className="eyebrow">Documento legal</div>
         <h1>Política de Privacidade</h1>
-        <p className="updated">Última atualização: 17 de outubro de 2026</p>
+        <p className="updated">Última atualização: 1 de novembro de 2026</p>
 
         <p>
           Esta Política de Privacidade descreve como o aplicativo <strong>Tubeless Lab</strong> (&quot;app&quot;,
@@ -105,7 +105,34 @@ export default function Privacidade() {
           Para ajuda com a integração, veja a página de <a href="/strava">Suporte Strava</a>.
         </p>
 
-        <h2><span className="num">06</span>Por quanto tempo guardamos</h2>
+        <h2><span className="num">06</span>Uso do app e notificações</h2>
+        <ul>
+          <li>
+            <strong>Eventos de uso:</strong> registramos interações dentro do app (telas abertas, toques em
+            produtos do Shop, uso do guia, aberturas de notificações), junto com a plataforma, a versão do
+            sistema e a versão do app. Esses dados ficam no banco do próprio Tubeless Lab, vinculados à sua
+            conta, servem só para melhorar o produto e medir as comunicações, não são vendidos nem
+            compartilhados com terceiros e são apagados junto com a conta.
+          </li>
+          <li>
+            <strong>Notificações:</strong> com a sua permissão, enviamos dois tipos: avisos do pneu (selante
+            acabando e hora de repor) e novidades e oportunidades (novidades do app e ofertas selecionadas do
+            mundo tubeless). Os dois podem ser desligados a qualquer momento em Config.; desligar as
+            notificações no celular desliga os dois. Para isso guardamos o identificador de notificação do
+            aparelho, apagado ao sair da conta, ao desligar os avisos ou ao excluir a conta.
+          </li>
+          <li>
+            <strong>Fila do Strava:</strong> se as vagas de conexão com o Strava estiverem esgotadas, você
+            pode entrar numa fila; guardamos só a data de entrada, para avisar quando abrir vaga.
+          </li>
+          <li>
+            <strong>Selante personalizado:</strong> o nome e a vida útil de um selante que você digitar ficam
+            na sua conta e são visíveis só para você. Usamos os nomes de forma agregada e anônima para decidir
+            quais marcas entram na lista do app.
+          </li>
+        </ul>
+
+        <h2><span className="num">07</span>Por quanto tempo guardamos</h2>
         <p>
           Mantemos seus dados enquanto sua conta existir. Quando você solicita a exclusão, seus dados entram
           em um período de carência de <strong>30 dias</strong> (durante o qual você pode cancelar a exclusão)
@@ -113,7 +140,7 @@ export default function Privacidade() {
           de <a href="/exclusao-de-dados">Exclusão de Dados</a>.
         </p>
 
-        <h2><span className="num">07</span>Seus direitos como titular</h2>
+        <h2><span className="num">08</span>Seus direitos como titular</h2>
         <p>Pela LGPD, você pode a qualquer momento:</p>
         <ul>
           <li>Confirmar a existência de tratamento e acessar seus dados;</li>
@@ -128,7 +155,7 @@ export default function Privacidade() {
           <a href="mailto:setup@tubelesslab.com"> setup@tubelesslab.com</a>.
         </p>
 
-        <h2><span className="num">08</span>Segurança</h2>
+        <h2><span className="num">09</span>Segurança</h2>
         <p>
           Adotamos medidas técnicas e administrativas para proteger seus dados, incluindo conexões
           criptografadas, controle de acesso por usuário e isolamento de dados entre contas. Nenhum sistema
@@ -136,13 +163,13 @@ export default function Privacidade() {
           vazamento.
         </p>
 
-        <h2><span className="num">09</span>Crianças</h2>
+        <h2><span className="num">10</span>Crianças</h2>
         <p>
           O app não é direcionado a menores de 13 anos e não coletamos intencionalmente dados dessa faixa
           etária.
         </p>
 
-        <h2><span className="num">10</span>Alterações nesta política</h2>
+        <h2><span className="num">11</span>Alterações nesta política</h2>
         <p>
           Podemos atualizar esta política periodicamente. Mudanças relevantes serão comunicadas no app ou
           por e-mail. A data no topo indica a última revisão.
