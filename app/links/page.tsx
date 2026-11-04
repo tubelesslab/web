@@ -4,6 +4,7 @@
 // Não depende de classes do globals.css, então é só adicionar este arquivo.
 
 import type { Metadata } from "next";
+import MetaPixel from "./MetaPixel";
 
 export const metadata: Metadata = {
   title: "Tubeless Lab — Links",
@@ -77,6 +78,7 @@ type LinkRow = {
   icon: React.ReactNode;
   variant: "primary" | "ghost";
   disabled?: boolean;
+  store?: "app-store" | "google-play";
 };
 
 export default function LinksPage() {
@@ -87,6 +89,7 @@ export default function LinksPage() {
       big: "App Store",
       icon: <AppleIcon />,
       variant: "primary",
+      store: "app-store",
     },
     {
       href: "https://play.google.com/store/apps/details?id=com.tubelesslab.app",
@@ -94,6 +97,7 @@ export default function LinksPage() {
       big: "Google Play",
       icon: <PlayIcon />,
       variant: "primary",
+      store: "google-play",
     },
     {
       href: "https://tubelesslab.com",
@@ -125,6 +129,7 @@ export default function LinksPage() {
         fontFamily: "Inter, system-ui, sans-serif",
       }}
     >
+      <MetaPixel />
       <div style={{ width: "100%", maxWidth: 460 }}>
         {/* Header */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
@@ -239,6 +244,7 @@ export default function LinksPage() {
               <a
                 key={i}
                 href={l.href}
+                data-store={l.store}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 style={base}

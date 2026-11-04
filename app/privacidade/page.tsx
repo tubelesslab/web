@@ -11,7 +11,7 @@ export default function Privacidade() {
       <main className="shell doc">
         <div className="eyebrow">Documento legal</div>
         <h1>Política de Privacidade</h1>
-        <p className="updated">Última atualização: 1 de novembro de 2026</p>
+        <p className="updated">Última atualização: 4 de novembro de 2026</p>
 
         <p>
           Esta Política de Privacidade descreve como o aplicativo <strong>Tubeless Lab</strong> (&quot;app&quot;,
@@ -73,6 +73,7 @@ export default function Privacidade() {
           <li><strong>Supabase</strong> — hospedagem do banco de dados e autenticação. Armazena sua conta, rodas, pneus, manutenções e preferências.</li>
           <li><strong>Apple</strong> — quando você usa &quot;Entrar com a Apple&quot;, para autenticar sua identidade.</li>
           <li><strong>Google</strong> — quando você usa &quot;Entrar com o Google&quot;, para autenticar sua identidade.</li>
+          <li><strong>Meta (Facebook/Instagram)</strong> — nas páginas de divulgação do site (como a /links), usamos o Pixel da Meta para medir o resultado de anúncios. Veja a seção 06.</li>
           <li><strong>Open-Meteo</strong> — serviço de dados climáticos. Recebe apenas as coordenadas aproximadas da cidade que você escolheu, sem qualquer dado que te identifique.</li>
         </ul>
         <p>
@@ -120,6 +121,15 @@ export default function Privacidade() {
             mundo tubeless). Os dois podem ser desligados a qualquer momento em Config.; desligar as
             notificações no celular desliga os dois. Para isso guardamos o identificador de notificação do
             aparelho, apagado ao sair da conta, ao desligar os avisos ou ao excluir a conta.
+          </li>
+          <li>
+            <strong>Pixel da Meta (site):</strong> na página tubelesslab.com/links usamos o Pixel da Meta para
+            saber quantas pessoas chegaram por um anúncio e tocaram em &quot;App Store&quot; ou &quot;Google
+            Play&quot;. A Meta recebe a visita, o toque na loja, a origem do anúncio (UTM) e identificadores do
+            navegador, como cookies, e pode usá-los conforme a política dela. Não enviamos seu e-mail, nome ou
+            dados da sua conta. O pixel não é carregado se o navegador sinaliza &quot;Do Not Track&quot; ou
+            &quot;Global Privacy Control&quot;, e você também pode bloquear cookies ou limitar anúncios nas
+            configurações do navegador e da sua conta Meta.
           </li>
           <li>
             <strong>Fila do Strava:</strong> se as vagas de conexão com o Strava estiverem esgotadas, você
