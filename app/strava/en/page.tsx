@@ -14,7 +14,7 @@ export default function StravaSupport() {
         <div className="eyebrow">Strava integration</div>
         <h1>Strava Support</h1>
         <p className="updated">
-          Last updated: October 17, 2026 · <a href="/strava">Ler em português</a>
+          Last updated: November 4, 2026 · <a href="/strava">Ler em português</a>
         </p>
 
         <p>
@@ -50,9 +50,9 @@ export default function StravaSupport() {
         <h2><span className="num">03</span>How to connect</h2>
         <ol>
           <li>Open the app and go to <strong>Settings → Integrations</strong>;</li>
-          <li>Tap <strong>Connect with Strava</strong> and approve access on the Strava page;</li>
-          <li>In <strong>Edit wheels</strong>, choose the matching Strava bike (gear);</li>
-          <li>Your kilometers will sync automatically from then on.</li>
+          <li>Read the summary of what we read and why, tap <strong>Connect with Strava</strong> and approve access on the Strava page (keep all permissions checked);</li>
+          <li>The app opens the bike picker: choose the matching Strava bike (gear). You can also do this later in <strong>Edit wheels</strong>;</li>
+          <li>From then on, kilometers are added automatically after each new activity, without opening the app.</li>
         </ol>
 
         <h2><span className="num">04</span>How to disconnect</h2>
@@ -70,17 +70,24 @@ export default function StravaSupport() {
           <div className="label">Summary</div>
           <p>
             We use Strava data <strong>only</strong> to provide features to the athlete who authorized it. We
-            do not sell it, share it, aggregate it across users, or use it to train any model, including AI
+            do not sell it, share it, show it to other users, or use it to train any model, including AI
             models.
           </p>
         </div>
         <ul>
-          <li>On disconnect, we delete the Strava data we hold: the gear link and the last synced distance;</li>
+          <li>
+            When you disconnect, or request account deletion, we revoke access at Strava and delete the Strava
+            data we hold: access keys, the gear link and the last synced distance. If you revoke access directly
+            on Strava, we delete it within 48 hours;
+          </li>
           <li>
             The tire-wear counter is a number calculated for your own wheels. It stays in your account after
             you disconnect and can be reset at any time in <strong>Edit wheels</strong>;
           </li>
-          <li>Strava data is cached for at most 7 days;</li>
+          <li>
+            We keep the gear link and the last synced distance only while your connection is active, refreshed
+            on every sync (at least once a day). With no successful sync for 7 days, we delete them;
+          </li>
           <li>
             To delete everything, delete your account in the app or see the{" "}
             <a href="/exclusao-de-dados">Data Deletion</a> page.
@@ -96,8 +103,11 @@ export default function StravaSupport() {
             If you choose to connect Strava, we access the distance of your activities and the gear (bikes) on
             your Strava account. We use this data only to show tire wear for your own wheels and to refine your
             own sealant-life estimate. It is shown only to you. We do not sell it, share it with third parties,
-            aggregate it across users, or use it to train any model, including AI models. We keep Strava data
-            cached for at most 7 days. When you disconnect Strava, we delete the Strava data we hold. You can
+            show it to other users, or use it to train any model, including AI models. We keep the gear link and
+            last synced distance only while your connection is active and delete them after 7 days without a
+            successful sync. When you disconnect Strava, we revoke access and delete the Strava data we hold.
+            Strava may collect usage data about Tubeless Lab, as described in the{" "}
+            <a href="https://www.strava.com/legal/privacy" rel="noopener">Strava Privacy Policy</a>. You can
             revoke access at strava.com/settings/apps and request deletion of your data at
             setup@tubelesslab.com.
           </p>
@@ -106,7 +116,13 @@ export default function StravaSupport() {
         <h2><span className="num">06</span>Troubleshooting</h2>
         <h3>Kilometers are not updating</h3>
         <p>
-          Open the app so it can sync, and confirm the wheelset is linked to the correct Strava bike.
+          Kilometers are added after each new activity (it can take a few minutes). Confirm the wheelset is
+          linked to the correct Strava bike and that the activity was recorded with it.
+        </p>
+        <h3>&quot;Strava connection ended&quot; appears</h3>
+        <p>
+          Access was revoked on Strava or expired. In <strong>Settings → Integrations</strong>, connect again
+          and relink the bike. Your tire wear counter is kept.
         </p>
         <h3>The bike I want is not listed</h3>
         <p>
