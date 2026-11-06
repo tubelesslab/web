@@ -73,7 +73,6 @@ export default function Privacidade() {
           <li><strong>Supabase</strong> — hospedagem do banco de dados e autenticação. Armazena sua conta, rodas, pneus, manutenções e preferências.</li>
           <li><strong>Apple</strong> — quando você usa &quot;Entrar com a Apple&quot;, para autenticar sua identidade.</li>
           <li><strong>Google</strong> — quando você usa &quot;Entrar com o Google&quot;, para autenticar sua identidade.</li>
-          <li><strong>Meta (Facebook/Instagram)</strong> — nas páginas de divulgação do site (como a /links), usamos o Pixel da Meta para medir o resultado de anúncios. Veja a seção 06.</li>
           <li><strong>Open-Meteo</strong> — serviço de dados climáticos. Recebe apenas as coordenadas aproximadas da cidade que você escolheu, sem qualquer dado que te identifique.</li>
         </ul>
         <p>
@@ -89,13 +88,27 @@ export default function Privacidade() {
           somente para você.
         </p>
         <ul>
-          <li>Não vendemos, não compartilhamos com terceiros e não agregamos esses dados entre usuários;</li>
+          <li>Não vendemos esses dados, não os compartilhamos com terceiros e não os mostramos a outros usuários;</li>
           <li>Não usamos os dados do Strava para treinar nenhum modelo, inclusive de inteligência artificial;</li>
-          <li>Os dados ficam em cache por no máximo 7 dias;</li>
           <li>
-            Ao desconectar o Strava, apagamos os dados do Strava que mantemos (o vínculo do equipamento e a
-            última distância sincronizada). O contador de desgaste do pneu calculado para as suas rodas
-            permanece na sua conta até que você o zere ou exclua a conta;
+            Guardamos o vínculo da bike e a última distância sincronizada somente enquanto a sua conexão
+            estiver ativa, atualizados a cada sincronização (no mínimo uma vez por dia). Se a conexão ficar
+            mais de 7 dias sem sincronizar com sucesso, apagamos esses dados;
+          </li>
+          <li>
+            Ao desconectar o Strava, ou ao pedir a exclusão da conta, revogamos o acesso no Strava e apagamos
+            os dados do Strava que mantemos (chaves de acesso, vínculo da bike e última distância
+            sincronizada). Se você revogar o acesso diretamente no Strava, apagamos esses dados em até 48
+            horas. O contador de desgaste do pneu calculado para as suas rodas permanece na sua conta até que
+            você o zere ou exclua a conta;
+          </li>
+          <li>
+            Os dados do Strava são tratados nos servidores do Supabase, nosso operador listado na seção 04. A
+            lista dos operadores que tratam dados do Strava está disponível a pedido;
+          </li>
+          <li>
+            O Strava pode coletar e usar dados sobre o uso do Tubeless Lab (dados de uso), conforme a{" "}
+            <a href="https://www.strava.com/legal/privacy" rel="noopener">Política de Privacidade do Strava</a>;
           </li>
           <li>
             Você pode desconectar no app (Config.), revogar o acesso em strava.com/settings/apps e solicitar a
@@ -106,43 +119,7 @@ export default function Privacidade() {
           Para ajuda com a integração, veja a página de <a href="/strava">Suporte Strava</a>.
         </p>
 
-        <h2><span className="num">06</span>Uso do app e notificações</h2>
-        <ul>
-          <li>
-            <strong>Eventos de uso:</strong> registramos interações dentro do app (telas abertas, toques em
-            produtos do Shop, uso do guia, aberturas de notificações), junto com a plataforma, a versão do
-            sistema e a versão do app. Esses dados ficam no banco do próprio Tubeless Lab, vinculados à sua
-            conta, servem só para melhorar o produto e medir as comunicações, não são vendidos nem
-            compartilhados com terceiros e são apagados junto com a conta.
-          </li>
-          <li>
-            <strong>Notificações:</strong> com a sua permissão, enviamos dois tipos: avisos do pneu (selante
-            acabando e hora de repor) e novidades e oportunidades (novidades do app e ofertas selecionadas do
-            mundo tubeless). Os dois podem ser desligados a qualquer momento em Config.; desligar as
-            notificações no celular desliga os dois. Para isso guardamos o identificador de notificação do
-            aparelho, apagado ao sair da conta, ao desligar os avisos ou ao excluir a conta.
-          </li>
-          <li>
-            <strong>Pixel da Meta (site):</strong> na página tubelesslab.com/links usamos o Pixel da Meta para
-            saber quantas pessoas chegaram por um anúncio e tocaram em &quot;App Store&quot; ou &quot;Google
-            Play&quot;. A Meta recebe a visita, o toque na loja, a origem do anúncio (UTM) e identificadores do
-            navegador, como cookies, e pode usá-los conforme a política dela. Não enviamos seu e-mail, nome ou
-            dados da sua conta. O pixel não é carregado se o navegador sinaliza &quot;Do Not Track&quot; ou
-            &quot;Global Privacy Control&quot;, e você também pode bloquear cookies ou limitar anúncios nas
-            configurações do navegador e da sua conta Meta.
-          </li>
-          <li>
-            <strong>Fila do Strava:</strong> se as vagas de conexão com o Strava estiverem esgotadas, você
-            pode entrar numa fila; guardamos só a data de entrada, para avisar quando abrir vaga.
-          </li>
-          <li>
-            <strong>Selante personalizado:</strong> o nome e a vida útil de um selante que você digitar ficam
-            na sua conta e são visíveis só para você. Usamos os nomes de forma agregada e anônima para decidir
-            quais marcas entram na lista do app.
-          </li>
-        </ul>
-
-        <h2><span className="num">07</span>Por quanto tempo guardamos</h2>
+        <h2><span className="num">06</span>Por quanto tempo guardamos</h2>
         <p>
           Mantemos seus dados enquanto sua conta existir. Quando você solicita a exclusão, seus dados entram
           em um período de carência de <strong>30 dias</strong> (durante o qual você pode cancelar a exclusão)
@@ -150,7 +127,7 @@ export default function Privacidade() {
           de <a href="/exclusao-de-dados">Exclusão de Dados</a>.
         </p>
 
-        <h2><span className="num">08</span>Seus direitos como titular</h2>
+        <h2><span className="num">07</span>Seus direitos como titular</h2>
         <p>Pela LGPD, você pode a qualquer momento:</p>
         <ul>
           <li>Confirmar a existência de tratamento e acessar seus dados;</li>
@@ -165,7 +142,7 @@ export default function Privacidade() {
           <a href="mailto:setup@tubelesslab.com"> setup@tubelesslab.com</a>.
         </p>
 
-        <h2><span className="num">09</span>Segurança</h2>
+        <h2><span className="num">08</span>Segurança</h2>
         <p>
           Adotamos medidas técnicas e administrativas para proteger seus dados, incluindo conexões
           criptografadas, controle de acesso por usuário e isolamento de dados entre contas. Nenhum sistema
@@ -173,13 +150,13 @@ export default function Privacidade() {
           vazamento.
         </p>
 
-        <h2><span className="num">10</span>Crianças</h2>
+        <h2><span className="num">09</span>Crianças</h2>
         <p>
           O app não é direcionado a menores de 13 anos e não coletamos intencionalmente dados dessa faixa
           etária.
         </p>
 
-        <h2><span className="num">11</span>Alterações nesta política</h2>
+        <h2><span className="num">10</span>Alterações nesta política</h2>
         <p>
           Podemos atualizar esta política periodicamente. Mudanças relevantes serão comunicadas no app ou
           por e-mail. A data no topo indica a última revisão.
