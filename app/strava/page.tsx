@@ -14,7 +14,7 @@ export default function StravaSuporte() {
         <div className="eyebrow">Integração com Strava</div>
         <h1>Suporte Strava</h1>
         <p className="updated">
-          Última atualização: 17 de outubro de 2026 · <a href="/strava/en">Read in English</a>
+          Última atualização: 4 de novembro de 2026 · <a href="/strava/en">Read in English</a>
         </p>
 
         <p>
@@ -50,9 +50,9 @@ export default function StravaSuporte() {
         <h2><span className="num">03</span>Como conectar</h2>
         <ol>
           <li>Abra o app e vá em <strong>Config. → Integrações</strong>;</li>
-          <li>Toque em <strong>Connect with Strava</strong> e autorize o acesso na página do Strava;</li>
-          <li>Em <strong>Editar rodas</strong>, escolha a bike (equipamento) correspondente do Strava;</li>
-          <li>A partir daí, os quilômetros sincronizam automaticamente.</li>
+          <li>Leia o resumo do que lemos e para quê, toque em <strong>Connect with Strava</strong> e autorize o acesso na página do Strava (mantenha todas as permissões marcadas);</li>
+          <li>O app abre a escolha da bike: selecione a bike (equipamento) correspondente do Strava. Você também pode fazer isso depois, em <strong>Editar rodas</strong>;</li>
+          <li>A partir daí, os quilômetros entram automaticamente a cada atividade nova, sem precisar abrir o app.</li>
         </ol>
 
         <h2><span className="num">04</span>Como desconectar</h2>
@@ -70,17 +70,25 @@ export default function StravaSuporte() {
           <div className="label">Resumo</div>
           <p>
             Usamos os dados do Strava <strong>somente</strong> para oferecer recursos ao atleta que os
-            autorizou. Não vendemos, não compartilhamos, não agregamos entre usuários e não usamos esses dados
-            para treinar nenhum modelo, inclusive de IA.
+            autorizou. Não vendemos, não compartilhamos, não mostramos a outros usuários e não usamos esses
+            dados para treinar nenhum modelo, inclusive de IA.
           </p>
         </div>
         <ul>
-          <li>Ao desconectar, apagamos os dados do Strava que mantemos: o vínculo do equipamento e a última distância sincronizada;</li>
+          <li>
+            Ao desconectar, ou ao pedir a exclusão da conta, revogamos o acesso no Strava e apagamos os dados do
+            Strava que mantemos: chaves de acesso, vínculo do equipamento e última distância sincronizada. Se
+            você revogar o acesso direto no Strava, apagamos em até 48 horas;
+          </li>
           <li>
             O contador de desgaste do pneu é um número calculado para as suas próprias rodas. Ele permanece na
             sua conta após a desconexão e pode ser zerado a qualquer momento em <strong>Editar rodas</strong>;
           </li>
-          <li>Os dados do Strava ficam em cache por no máximo 7 dias;</li>
+          <li>
+            Mantemos o vínculo e a última distância sincronizada só enquanto a conexão estiver ativa,
+            atualizados a cada sincronização (no mínimo uma vez por dia). Sem sincronização bem-sucedida por 7
+            dias, apagamos esses dados;
+          </li>
           <li>
             Para apagar tudo, exclua sua conta no app ou veja a página de{" "}
             <a href="/exclusao-de-dados">Exclusão de Dados</a>.
@@ -93,8 +101,13 @@ export default function StravaSuporte() {
         <h2><span className="num">06</span>Solução de problemas</h2>
         <h3>Os km não atualizam</h3>
         <p>
-          Abra o app para sincronizar e confirme que o conjunto de rodas está vinculado à bike correta do
-          Strava.
+          Os km entram depois de cada atividade nova (pode levar alguns minutos). Confirme que o conjunto de
+          rodas está vinculado à bike correta do Strava e que a atividade foi gravada com ela.
+        </p>
+        <h3>Aparece &quot;Conexão com o Strava encerrada&quot;</h3>
+        <p>
+          O acesso foi revogado no Strava ou expirou. Em <strong>Config. → Integrações</strong>, conecte de
+          novo e vincule a bike outra vez. O contador de desgaste dos seus pneus é mantido.
         </p>
         <h3>A bike que eu quero não aparece</h3>
         <p>
