@@ -4,6 +4,7 @@ import { TOUR_STEPS, arr, fmtDate, fmtDateTime, fmtN, fmtPct, fmtText, num, tr }
 
 type R = Record<string, any>;
 
+// Reserva, usada só se o snapshot não trouxer o teto (strava_capacity.max, vindo de app_config).
 const STRAVA_LIMIT = 10;
 const FUNNEL_LABELS = ["Cadastro", "Rodas", "Manutenção", "Strava"];
 
@@ -53,7 +54,7 @@ export function Dashboard({ data }: { data: R }) {
           <Card label="Furos" value={fmtN(ov.punctures)} />
           <Card
             label="Strava conectado"
-            value={num(ov.strava_connected) === null ? "—" : `${fmtN(ov.strava_connected)} / ${STRAVA_LIMIT}`}
+            value={num(ov.strava_connected) === null ? "—" : `${fmtN(ov.strava_connected)} / ${num(d.strava_capacity?.max) ?? STRAVA_LIMIT}`}
           />
           <Card label="Cadastros 7d" value={fmtN(ov.signups_7d)} />
           <Card label="Cadastros 30d" value={fmtN(ov.signups_30d)} />
