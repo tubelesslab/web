@@ -46,7 +46,8 @@ export type Snapshot = {
 };
 
 export async function getLatestSnapshot(): Promise<Snapshot | null> {
-  const res = await sb("admin_kpi_snapshots?select=id,data,created_at&order=id.desc&limit=1");
+  // Ignora os snapshots do bloco Aquisicao (data.kind = 'acquisition').
+  const res = await sb("admin_kpi_snapshots?select=id,data,created_at&data->>kind=is.null&order=id.desc&limit=1");
   const rows = (await res.json()) as Snapshot[];
   return rows[0] ?? null;
 }

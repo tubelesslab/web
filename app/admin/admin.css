@@ -92,6 +92,7 @@ html:has(.adm) { color-scheme: dark; }
 .adm-col-label { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
 .seg-0 { background: var(--grey-2); }
 .seg-1 { background: var(--grey-3); }
+.seg-2 { background: repeating-linear-gradient(45deg, #3A3A3D 0 3px, #2A2A2C 3px 6px); }
 .adm-legend { display: flex; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--ink-dim); }
 .adm-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
 
@@ -228,3 +229,21 @@ html:has(.adm) { color-scheme: dark; }
   .adm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .adm-value { font-size: 22px; }
 }
+
+/* Aquisicao */
+a.adm-chip { text-decoration: none; display: inline-block; }
+.acq-range { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+.acq-range input { font: 500 14px var(--font-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; color-scheme: dark; }
+.acq-plot { position: relative; display: flex; align-items: flex-end; gap: 2px; height: 190px; }
+.acq-bar { flex: 1 1 0; height: 100%; display: flex; align-items: flex-end; min-width: 0; }
+.acq-line { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.acq-line-stroke { stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.acq-strip { display: flex; gap: 2px; margin-top: 6px; height: 14px; }
+.acq-cell { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 2px; }
+.acq-ad { display: block; width: 100%; height: 4px; border-radius: 2px; background: var(--accent); }
+.acq-ms { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.acq-labels { display: flex; gap: 2px; margin-top: 4px; font-size: 10px; color: var(--ink-faint); }
+.acq-labels span { flex: 1 1 0; min-width: 0; white-space: nowrap; overflow: visible; }
+.acq-swatch-line { height: 3px !important; background: var(--accent); vertical-align: middle; }
+.adm-legend .acq-ad { display: inline-block; width: 10px; height: 4px; margin-right: 4px; vertical-align: middle; }
+.adm-legend .acq-ms { display: inline-block; width: 8px; height: 8px; margin-right: 4px; }
