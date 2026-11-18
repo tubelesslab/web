@@ -1,21 +1,35 @@
+import type { ReactNode } from "react";
 import { logoutAction } from "../actions";
 import { RefreshButton } from "./RefreshButton";
 import { fmtDateTime } from "./format";
 
+type Page = "dashboard" | "push" | "aquisicao";
+
+const TITLE_SUFFIX: Record<Page, string> = { dashboard: "", push: " · Push", aquisicao: " · Aquisição" };
+const NAV: { page: Page; href: string; label: string }[] = [
+  { page: "dashboard", href: "/admin", label: "Painel" },
+  { page: "push", href: "/admin/push", label: "Push" },
+  { page: "aquisicao", href: "/admin/aquisicao", label: "Aquisição" },
+];
+
 export function Header({
   showRefresh,
+  refresh,
   updatedAt,
   page = "dashboard",
 }: {
   showRefresh?: boolean;
+  // Botao de atualizar proprio da pagina (ex.: aquisicao, que atualiza por periodo).
+  refresh?: ReactNode;
   updatedAt?: string | null;
-  page?: "dashboard" | "push";
+  page?: Page;
 }) {
+  const withUpdated = showRefresh || refresh !== undefined;
   return (
     <header className="adm-header">
       <div className="adm-header-left">
-        <span className="adm-wordmark">TBLS LAB · Admin{page === "push" ? " · Push" : ""}</span>
-        {showRefresh && (
+        <span className="adm-wordmark">TBLS LAB · Admin{TITLE_SUFFIX[page]}</span>
+        {withUpdated && (
           <span className="adm-updated">
             {updatedAt ? (
               <>
@@ -28,16 +42,12 @@ export function Header({
         )}
       </div>
       <div className="adm-header-actions">
-        {showRefresh && <RefreshButton />}
-        {page === "push" ? (
-          <a className="adm-link" href="/admin">
-            Painel
+        {refresh ?? (showRefresh && <RefreshButton />)}
+        {NAV.filter((n) => n.page !== page).map((n) => (
+          <a key={n.page} className="adm-link" href={n.href}>
+            {n.label}
           </a>
-        ) : (
-          <a className="adm-link" href="/admin/push">
-            Push
-          </a>
-        )}
+        ))}
         <a className="adm-link" href="/admin/senha">
           Trocar senha
         </a>
