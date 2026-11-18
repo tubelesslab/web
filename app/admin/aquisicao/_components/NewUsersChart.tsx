@@ -7,8 +7,12 @@ type R = Record<string, any>;
 
 const dm = (iso: string) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
 
-// Ativacao 7d em media movel de 7 dias: soma(roda em ate 7d) / soma(elegiveis), por dia. null se nao ha elegiveis.
-function activationLine(daily: R[]): (number | null)[] {
+// Abaixo disso a media movel e ruido: a linha some e o dia vira um ponto vazio.
+const MIN_SAMPLE = 10;
+
+// Ativacao 7d em media movel de 7 dias: soma(roda em ate 7d) / soma(elegiveis), por dia.
+// pct e null quando ha menos de MIN_SAMPLE elegiveis; small marca os dias com algum elegivel mas amostra pequena.
+function activationLine(daily: R[]): { pct: number | null; small: boolean }[] {
   return daily.map((_, i) => {
     let w = 0;
     let e = 0;
@@ -16,7 +20,7 @@ function activationLine(daily: R[]): (number | null)[] {
       w += num(daily[k].wheel7) ?? 0;
       e += num(daily[k].elig7) ?? 0;
     }
-    return e > 0 ? (w / e) * 100 : null;
+    return e >= MIN_SAMPLE ? { pct: (w / e) * 100, small: false } : { pct: null, small: e > 0 };
   });
 }
 
@@ -36,7 +40,7 @@ export function NewUsersChart({ daily, milestones }: { daily: R[]; milestones: R
   // Segmentos continuos da linha (quebra onde nao ha dado). x no centro de cada coluna.
   const segs: string[] = [];
   let cur: string[] = [];
-  act.forEach((v, i) => {
+  act.forEach(({ pct: v }, i) => {
     if (v === null) {
       if (cur.length) segs.push(cur.join(" "));
       cur = [];
@@ -66,6 +70,17 @@ export function NewUsersChart({ daily, milestones }: { daily: R[]; milestones: R
                 </div>
               </div>
             ))}
+            {act.map(
+              (a, i) =>
+                a.small && (
+                  <i
+                    key={String(daily[i].day)}
+                    className="acq-dot"
+                    style={{ left: `${((i + 0.5) / n) * 100}%` }}
+                    title={`${dm(String(daily[i].day))}: ativação não exibida (amostra < ${MIN_SAMPLE})`}
+                  />
+                ),
+            )}
             <svg className="acq-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
               {segs.map((p, i) => (
                 <polyline key={i} points={p} className="acq-line-stroke" fill="none" />
@@ -105,6 +120,7 @@ export function NewUsersChart({ daily, milestones }: { daily: R[]; milestones: R
         <span><i className="adm-swatch seg-1" /> Android</span>
         <span><i className="adm-swatch seg-2" /> Sem evento</span>
         <span><i className="adm-swatch acq-swatch-line" /> Ativação 7d (média móvel de 7 dias)</span>
+        <span><i className="adm-swatch acq-dot-sw" /> Ponto vazio: amostra &lt; {MIN_SAMPLE}</span>
         <span><i className="adm-swatch acq-ad" /> Dia com campanha</span>
         <span><i className="adm-swatch acq-ms" /> Marco</span>
       </div>
